@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛孩星球 Pet Planet - 寵物美容與健康小助手</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 圖示 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #fdfbf7;
+        }
+        .tab-active {
+            border-bottom: 3px solid #f59e0b;
+            color: #d97706;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="text-gray-700 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- 頁首與導覽列 -->
+    <header class="bg-amber-50 shadow-sm sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white text-xl">
+                    <i class="fa-solid font-bold fa-paw"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-amber-900 leading-tight">毛孩星球 Pet Planet</h1>
+                    <p class="text-xs text-amber-700">精緻寵物沙龍 & 健康照護</p>
+                </div>
+            </div>
+            <div class="mt-2 sm:mt-0 flex items-center space-x-4 text-sm font-medium text-amber-900">
+                <a href="#about" class="hover:text-amber-600 transition">關於我們</a>
+                <a href="#calculator" class="hover:text-amber-600 transition">換算小工具</a>
+                <a href="#health" class="hover:text-amber-600 transition">保健衛教</a>
+                <a href="#prices" class="hover:text-amber-600 transition">服務價目</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-8 space-y-12 flex-grow">
+
+        <!-- ① 工作室簡介 & 聯絡資訊 (控制在300字以內) -->
+        <section id="about" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-amber-100">
+            <div class="grid md:grid-cols-3 gap-6 items-center">
+                <div class="md:col-span-2 space-y-4">
+                    <div class="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">
+                        歡迎光臨毛孩星球
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">讓寶貝感受如同星級 SPA 的寵愛照顧</h2>
+                    <!-- 字數約220字，低於300字限制 -->
+                    <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+                        「毛孩星球」專注於提供無壓力、低刺激的溫和美容體驗。我們採用草本低敏洗劑與微泡絲絨 SPA 泡澡，能深層潔淨肌膚並修護毛髮。美容師具備國際專業證照與寵物急救與行為減壓知識，堅持全陪同不關籠照護，讓每一隻貓咪與狗狗都能在輕鬆舒適的環境下享受洗澡、剪毛、清耳朵及修剪指甲等服務。我們視每位毛孩為家人，給予最貼心、細緻的尊榮呵護。
+                    </p>
+                </div>
+                <!-- 聯絡電話與地址資訊 -->
+                <div class="bg-amber-50/60 p-5 rounded-xl border border-amber-200/60 space-y-3">
+                    <h3 class="font-bold text-amber-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-address-card text-amber-600"></i> 門市資訊
+                    </h3>
+                    <div class="space-y-2 text-sm">
+                        <p class="flex items-start gap-2">
+                            <i class="fa-solid fa-phone text-amber-600 mt-1"></i>
+                            <span><strong>預約專線：</strong><br><a href="tel:0223456789" class="text-amber-700 hover:underline">02-2345-6789</a></span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <i class="fa-solid fa-clock text-amber-600 mt-1"></i>
+                            <span><strong>營業時間：</strong><br>10:00 - 19:00 (週一公休)</span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-amber-600 mt-1"></i>
+                            <span><strong>工作室地址：</strong><br>台北市大安區美麗路168號1樓</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ② 換算功能 (年齡換算器 + 身高體重BMI檢測) -->
+        <section id="calculator" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-amber-100">
+            <div class="text-center max-w-xl mx-auto mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">毛孩健康換算小助手</h2>
+                <p class="text-gray-500 text-sm mt-1">輕鬆了解寶貝的人類換算年齡與體態體重指數 (BMI)</p>
+            </div>
+
+            <!-- 分頁切換鈕 -->
+            <div class="flex justify-center border-b border-gray-200 mb-6">
+                <button id="tab-age-btn" onclick="switchTab('age')" class="px-6 py-3 text-sm font-medium tab-active transition">
+                    <i class="fa-solid fa-cake-candles mr-1"></i> 人類年齡換算
+                </button>
+                <button id="tab-bmi-btn" onclick="switchTab('bmi')" class="px-6 py-3 text-sm font-medium text-gray-500 hover:text-amber-600 transition">
+                    <i class="fa-solid fa-weight-scale mr-1"></i> 體態 BMI 計算
+                </button>
+            </div>
+
+            <!-- 功能 1: 年齡換算器 -->
+            <div id="calc-age-content" class="max-w-md mx-auto space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">寵物種類</label>
+                        <select id="pet-type" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                            <option value="dog-small">小型犬 (10kg以下)</option>
+                            <option value="dog-medium">中型犬 (10-25kg)</option>
+                            <option value="dog-large">大型犬 (25kg以上)</option>
+                            <option value="cat">貓咪</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">寵物實際年齡 (歲)</label>
+                        <input type="number" id="pet-age" min="0.5" max="30" step="0.5" value="3" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                    </div>
+                </div>
+                <button onclick="calculateAge()" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg shadow transition duration-200">
+                    計算相當於人類歲數
+                </button>
+                <div id="age-result" class="hidden p-4 bg-amber-50 rounded-xl text-center border border-amber-200">
+                    <p class="text-xs text-amber-800 uppercase tracking-wider font-semibold">換算結果</p>
+                    <p class="text-2xl font-bold text-amber-900 my-1"><span id="human-age-val">0</span> 歲</p>
+                    <p id="age-desc" class="text-xs text-gray-600"></p>
+                </div>
+            </div>
+
+            <!-- 功能 2: BMI 檢測器 (以身高/身長與體重試算) -->
+            <div id="calc-bmi-content" class="hidden max-w-md mx-auto space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">體長 / 身高 (公分 cm)</label>
+                        <input type="number" id="pet-height" placeholder="例: 40" min="10" max="200" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">體重 (公斤 kg)</label>
+                        <input type="number" id="pet-weight" placeholder="例: 5" min="0.5" max="100" step="0.1" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                    </div>
+                </div>
+                <button onclick="calculateBMI()" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg shadow transition duration-200">
+                    計算體態 BMI 指數
+                </button>
+                <div id="bmi-result" class="hidden p-4 bg-amber-50 rounded-xl text-center border border-amber-200">
+                    <p class="text-xs text-amber-800 uppercase tracking-wider font-semibold">BMI 指數結果</p>
+                    <p class="text-2xl font-bold text-amber-900 my-1"><span id="bmi-val">0</span></p>
+                    <span id="bmi-badge" class="inline-block px-3 py-0.5 text-xs font-bold rounded-full text-white bg-gray-500 mb-1">評估中</span>
+                    <p id="bmi-desc" class="text-xs text-gray-600 mt-1"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ③ 衛教小知識 (符合美容與健康主題，至少2則) -->
+        <section id="health" class="space-y-4">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-heart-pulse text-amber-500 text-xl"></i>
+                <h2 class="text-xl font-bold text-gray-800">毛孩美容與健康衛教專欄</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 衛教 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-amber-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 text-amber-600 text-sm font-semibold mb-2">
+                            <i class="fa-solid fa-shower"></i>
+                            <span>美容保健知識 #01</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">為什麼毛孩不能頻繁洗澡？正確頻率是多少？</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            許多飼主以為勤洗澡才能保持清潔，但毛孩皮膚的角質層比人類薄得多！過度洗澡會洗去皮脂腺分泌的天然保護層，導致皮膚乾燥、發癢甚至引發皮炎。建議狗狗在正常情況下 <strong>7~14 天洗一次</strong>；貓咪則因有自我清理習慣，若無外出或特殊皮膚病，<strong>1~3 個月洗一次</strong>或僅做局部清潔即可。
+                        </p>
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded-lg text-xs text-amber-900 border border-amber-200">
+                        <strong>💡 小撇步：</strong> 每次洗澡後務必澈底吹乾毛髮與底層細毛，防止潮濕滋生黴菌與細菌！
+                    </div>
+                </div>
+
+                <!-- 衛教 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-amber-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 text-amber-600 text-sm font-semibold mb-2">
+                            <i class="fa-solid fa-ear-deaf"></i>
+                            <span>健康預防知識 #02</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">耳道清潔與指甲修剪：被忽視的健康警訊</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            耳垢過多或長期未清易導致耳疥蟲與外耳炎，若發現毛孩經常甩頭或抓耳朵，需及時護理。另外，過長的指甲會影響毛孩走路姿勢，長期下來可能引發關節炎或指甲內肉嵌入（俗稱凍甲）。每兩週檢查一次耳道並適度修剪指甲與腳底毛，能有效維持骨骼健全與皮膚衛生。
+                        </p>
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded-lg text-xs text-amber-900 border border-amber-200">
+                        <strong>💡 小撇步：</strong> 剪指甲時請避開血管（粉紅色部分），若不慎流血可用止血粉壓迫止血。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ④ 價目表 (包含小型犬、中型犬、貓咪) -->
+        <section id="prices" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-amber-100 space-y-6">
+            <div class="flex flex-wrap justify-between items-end border-b border-gray-100 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800">透明化美容服務價目表</h2>
+                    <p class="text-gray-500 text-sm mt-1">包含基礎洗澡與全套精緻大美容服務</p>
+                </div>
+                <span class="text-xs bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-medium mt-2 sm:mt-0">
+                    * 如毛髮嚴重結毛或具特殊攻擊性，現場可能酌收處理費用
+                </span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[500px]">
+                    <thead>
+                        <tr class="bg-amber-50/70 text-amber-900 text-sm">
+                            <th class="p-3.5 rounded-l-lg font-bold">寵物類別 / 項目</th>
+                            <th class="p-3.5 font-bold">基礎小美容 (洗澡+清耳+剪指甲)</th>
+                            <th class="p-3.5 font-bold">精緻大美容 (基礎+全身造型修剪)</th>
+                            <th class="p-3.5 rounded-r-lg font-bold">碳酸泉碳酸 SPA 泡澡</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 text-sm text-gray-700">
+                        <tr class="hover:bg-amber-50/30 transition">
+                            <td class="p-3.5 font-semibold text-gray-800">
+                                <i class="fa-solid fa-dog text-amber-500 mr-1.5"></i> 小型犬 <span class="text-xs text-gray-400 font-normal">(9kg 以下)</span>
+                            </td>
+                            <td class="p-3.5 font-medium text-amber-700">NT$ 600 起</td>
+                            <td class="p-3.5 font-medium text-amber-700">NT$ 1,200 起</td>
+                            <td class="p-3.5 text-gray-500">+ NT$ 300</td>
+                        </tr>
+                        <tr class="hover:bg-amber-50/30 transition">
+                            <td class="p-3.5 font-semibold text-gray-800">
+                                <i class="fa-solid fa-dog text-amber-600 text-base mr-1.5"></i> 中型犬 <span class="text-xs text-gray-400 font-normal">(10-22kg)</span>
+                            </td>
+                            <td class="p-3.5 font-medium text-amber-700">NT$ 900 起</td>
+                            <td class="p-3.5 font-medium text-amber-700">NT$ 1,800 起</td>
+                            <td class="p-3.5 text-gray-500">+ NT$ 450</td>
+                        </tr>
+                        <tr class="hover:bg-amber-50/30 transition">
+                            <td class="p-3.5 font-semibold text-gray-800">
+                                <i class="fa-solid fa-cat text-amber-500 mr-1.5"></i> 貓咪短毛 <span class="text-xs text-gray-400 font-normal">(不分體型)</span>
+                            </td>
+                            <td class="p-3.5 font-medium text-amber-700">NT$ 800 起</td>
+                            <td class="p-3.5 font-medium text-amber-700">NT$ 1,500 起</td>
+                            <td class="p-3.5 text-gray-500">+ NT$ 400</td>
+                        </tr>
+                        <tr class="hover:bg-amber-50/30 transition">
+                            <td class="p-3.5 font-semibold text-gray-800">
+                                <i class="fa-solid fa-cat text-amber-700 mr-1.5"></i> 貓咪長毛 <span class="text-xs text-gray-400 font-normal">(不分體型)</span>
+                            </td>
+                            <td class="p-3.5 font-medium text-amber-700">NT$ 1,000 起</td>
+                            <td class="p-3.5 font-medium text-amber-700">NT$ 1,900 起</td>
+                            <td class="p-3.5 text-gray-500">+ NT$ 400</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="bg-gray-800 text-gray-400 py-6 text-center text-sm border-t border-gray-700 mt-12">
+        <div class="max-w-5xl mx-auto px-4 space-y-2">
+            <p>© 2026 毛孩星球 Pet Planet 美容工作室. All Rights Reserved.</p>
+            <p class="text-xs text-gray-500">用心對待每一隻造訪星球的毛孩子 🐾</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript 換算邏輯與介面互動 -->
+    <script>
+        // 分頁切換邏輯
+        function switchTab(tab) {
+            const ageBtn = document.getElementById('tab-age-btn');
+            const bmiBtn = document.getElementById('tab-bmi-btn');
+            const ageContent = document.getElementById('calc-age-content');
+            const bmiContent = document.getElementById('calc-bmi-content');
+
+            if (tab === 'age') {
+                ageBtn.classList.add('tab-active');
+                ageBtn.classList.remove('text-gray-500');
+                bmiBtn.classList.remove('tab-active');
+                bmiBtn.classList.add('text-gray-500');
+
+                ageContent.classList.remove('hidden');
+                bmiContent.classList.add('hidden');
+            } else {
+                bmiBtn.classList.add('tab-active');
+                bmiBtn.classList.remove('text-gray-500');
+                ageBtn.classList.remove('tab-active');
+                ageBtn.classList.add('text-gray-500');
+
+                bmiContent.classList.remove('hidden');
+                ageContent.classList.add('hidden');
+            }
+        }
+
+        // 年齡換算邏輯
+        function calculateAge() {
+            const type = document.getElementById('pet-type').value;
+            const age = parseFloat(document.getElementById('pet-age').value);
+
+            if (isNaN(age) || age <= 0) {
+                showResultModal("請輸入有效的年齡數字！");
+                return;
+            }
+
+            let humanAge = 0;
+            let desc = "";
+
+            if (type === 'cat') {
+                // 貓咪換算邏輯
+                if (age <= 1) humanAge = age * 15;
+                else if (age <= 2) humanAge = 15 + (age - 1) * 9;
+                else humanAge = 24 + (age - 2) * 4;
+                desc = "貓咪前兩年生長迅速，之後每年約相當於人類增加 4 歲。";
+            } else if (type === 'dog-small') {
+                // 小型犬換算邏輯
+                if (age <= 1) humanAge = 15;
+                else if (age <= 2) humanAge = 24;
+                else humanAge = 24 + (age - 2) * 4;
+                desc = "小型犬壽命相對較長，成年後老化速度較平緩。";
+            } else if (type === 'dog-medium') {
+                // 中型犬換算邏輯
+                if (age <= 1) humanAge = 15;
+                else if (age <= 2) humanAge = 24;
+                else humanAge = 24 + (age - 2) * 5;
+                desc = "中型犬成年後，每年相當於人類增加 5 歲。";
+            } else {
+                // 大型犬換算邏輯
+                if (age <= 1) humanAge = 14;
+                else if (age <= 2) humanAge = 22;
+                else humanAge = 22 + (age - 2) * 7;
+                desc = "大型犬成長較快且老齡化較早，需多注意關節保養。";
+            }
+
+            document.getElementById('human-age-val').innerText = Math.round(humanAge);
+            document.getElementById('age-desc').innerText = desc;
+            document.getElementById('age-result').classList.remove('hidden');
+        }
+
+        // 寵物 BMI 計算邏輯 (體重 / (身長以公尺為單位)^2)
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById('pet-height').value);
+            const weight = parseFloat(document.getElementById('pet-weight').value);
+
+            if (isNaN(height) || height <= 0 || isNaN(weight) || weight <= 0) {
+                showResultModal("請填寫正確的身高（公分）與體重（公斤）！");
+                return;
+            }
+
+            const heightInMeters = height / 100;
+            const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(1);
+
+            const bmiValElem = document.getElementById('bmi-val');
+            const bmiBadgeElem = document.getElementById('bmi-badge');
+            const bmiDescElem = document.getElementById('bmi-desc');
+
+            bmiValElem.innerText = bmi;
+
+            // 簡化之寵物體態評判參考
+            if (bmi < 15) {
+                bmiBadgeElem.innerText = "偏瘦";
+                bmiBadgeElem.className = "inline-block px-3 py-0.5 text-xs font-bold rounded-full text-white bg-blue-500 mb-1";
+                bmiDescElem.innerText = "寶貝體態偏瘦，建議可增加優質蛋白質攝取或諮詢獸醫。";
+            } else if (bmi >= 15 && bmi <= 25) {
+                bmiBadgeElem.innerText = "標準體態";
+                bmiBadgeElem.className = "inline-block px-3 py-0.5 text-xs font-bold rounded-full text-white bg-green-500 mb-1";
+                bmiDescElem.innerText = "恭喜！寶貝維持非常健康的標準體態，請繼續保持。";
+            } else if (bmi > 25 && bmi <= 32) {
+                bmiBadgeElem.innerText = "過重 Warning";
+                bmiBadgeElem.className = "inline-block px-3 py-0.5 text-xs font-bold rounded-full text-white bg-amber-500 mb-1";
+                bmiDescElem.innerText = "寶貝稍微偏胖囉！適當控制零食與增加運動量有助於關節健康。";
+            } else {
+                bmiBadgeElem.innerText = "肥胖 Danger";
+                bmiBadgeElem.className = "inline-block px-3 py-0.5 text-xs font-bold rounded-full text-white bg-red-500 mb-1";
+                bmiDescElem.innerText = "體重已過重，易增加心血管與關節負擔，建議制定減重計畫。";
+            }
+
+            document.getElementById('bmi-result').classList.remove('hidden');
+        }
+
+        // 自訂非阻塞提示訊息 (替代 alert)
+        function showResultModal(message) {
+            const modal = document.createElement('div');
+            modal.className = "fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-4";
+            modal.innerHTML = `
+                <div class="bg-white rounded-xl p-6 max-w-sm w-full shadow-lg text-center space-y-4">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto text-xl">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
+                    <p class="text-gray-700 font-medium text-sm">${message}</p>
+                    <button onclick="this.closest('.fixed').remove()" class="w-full py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-sm font-semibold transition">
+                        好的，我知道了
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+    </script>
+</body>
+</html>
